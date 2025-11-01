@@ -123,20 +123,9 @@ trek-marketplace/
 ✅ Real-Time Updates (WebSocket + Redis)  
 ✅ Provider Dashboard  
 
----
 
-### 📅 Development Roadmap
-
-| Phase | Timeline | Description |
-|-------|-----------|-------------|
-| Week 1 | Setup & Auth | Environment setup, DB schema, login/signup |
-| Week 2 | Listings | Provider CRUD, trek filters |
-| Week 3 | Booking & Payments | Customer booking flow, Razorpay integration |
-| Week 4 | Reviews & Dashboard | Review system, provider dashboard, polish |
-
----
 
 ### 🧠 Author
 
-**Project Lead:** [Your Name]  
+**Project Lead:** Kartikeya Patel 
 **Inspiration:** Making trekking in India more accessible and authentic 🏞️  
