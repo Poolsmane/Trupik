@@ -1,0 +1,118 @@
+trek-marketplace/
+│
+├── app/
+│   ├── main.py                          # FastAPI entry point
+│   │
+│   ├── core/
+│   │   ├── config.py                    # Environment variables
+│   │   ├── database.py                  # PostgreSQL setup
+│   │   ├── security.py                  # JWT + password hashing
+│   │   ├── dependencies.py              # Dependency injections
+│   │   └── __init__.py
+│   │
+│   ├── models/
+│   │   ├── user.py
+│   │   ├── listing.py
+│   │   ├── booking.py
+│   │   ├── review.py
+│   │   └── __init__.py
+│   │
+│   ├── schemas/
+│   │   ├── user_schema.py
+│   │   ├── listing_schema.py
+│   │   ├── booking_schema.py
+│   │   ├── review_schema.py
+│   │   └── __init__.py
+│   │
+│   ├── api/
+│   │   ├── v1/
+│   │   │   ├── auth/
+│   │   │   │   ├── customer_routes.py
+│   │   │   │   ├── provider_routes.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── listings_routes.py
+│   │   │   ├── bookings_routes.py
+│   │   │   ├── payments_routes.py
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   │
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   ├── listing_service.py
+│   │   ├── booking_service.py
+│   │   └── __init__.py
+│   │
+│   ├── utils/
+│   │   ├── jwt_handler.py
+│   │   ├── supabase_client.py
+│   │   ├── hashing.py
+│   │   ├── constants.py
+│   │   └── __init__.py
+│   │
+│   ├── workers/
+│   │   ├── celery_app.py
+│   │   └── __init__.py
+│   │
+│   └── __init__.py
+│
+│
+├── frontend/                            # All client-facing files
+│   ├── templates/                       # Jinja2 HTML templates
+│   │   ├── base.html                    # Common layout (header/footer)
+│   │   ├── index.html                   # Landing page (Home/About)
+│   │   ├── treks.html                   # Trek listings (public)
+│   │   ├── booking.html                 # Booking page (login required)
+│   │   ├── login.html                   # Login page
+│   │   ├── register.html                # Signup page
+│   │   ├── about.html                   # About the platform
+│   │   └── provider.html                # Provider profile page
+│   │
+│   ├── static/
+│   │   ├── css/
+│   │   │   ├── style.css                # Global site-wide styles
+│   │   │   ├── index.css                # Home page specific
+│   │   │   ├── treks.css                # Trek listing page
+│   │   │   ├── booking.css              # Booking page
+│   │   │   ├── login.css
+│   │   │   ├── register.css
+│   │   │   ├── provider.css
+│   │   │   └── about.css
+│   │   │
+│   │   ├── js/
+│   │   │   ├── main.js                  # Common scripts (nav, modals, etc.)
+│   │   │   ├── index.js                 # Landing page interactions
+│   │   │   ├── treks.js                 # Trek fetching & filtering
+│   │   │   ├── booking.js               # Booking flow + login check
+│   │   │   ├── login.js                 # Login form logic
+│   │   │   ├── register.js              # Signup form logic
+│   │   │   └── provider.js              # Provider dashboard
+│   │   │
+│   │   ├── images/                      # All static images
+│   │   │   ├── logo.png
+│   │   │   ├── hero.jpg
+│   │   │   ├── trek_samples/
+│   │   │   └── icons/
+│   │   │
+│   │   └── favicon.ico
+│   │
+│   └── README.md                        # Frontend documentation
+│
+│
+├── scripts/
+│   ├── init_db.py                       # Initialize PostgreSQL tables
+│   ├── seed_data.py                     # Populate sample treks/providers
+│   └── migrate.sh                       # Alembic or manual migrations
+│
+├── tests/
+│   ├── __init__.py
+│   ├── test_auth.py
+│   ├── test_listings.py
+│   ├── test_booking.py
+│   ├── test_payments.py
+│   └── conftest.py
+│
+├── .env
+├── requirements.txt
+├── README.md
+├── Dockerfile
+└── docker-compose.yml

@@ -1,0 +1,5 @@
+sudo -u postgres psql
+CREATE USER trek_user WITH PASSWORD 'trekpass';
+CREATE DATABASE trek_marketplace OWNER trek_user;
+GRANT ALL PRIVILEGES ON DATABASE trek_marketplace TO trek_user;
+\q
