@@ -1,0 +1,189 @@
+trek-marketplace/
+│
+├── app/                                 # ⚙️ FASTAPI BACKEND (UNCHANGED)
+│   ├── main.py
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── security.py
+│   │   ├── dependencies.py
+│   │   └── __init__.py
+│   │
+│   ├── models/
+│   │   ├── user.py
+│   │   ├── listing.py
+│   │   ├── booking.py
+│   │   ├── review.py
+│   │   └── __init__.py
+│   │
+│   ├── schemas/
+│   │   ├── user_schema.py
+│   │   ├── listing_schema.py
+│   │   ├── booking_schema.py
+│   │   ├── review_schema.py
+│   │   └── __init__.py
+│   │
+│   ├── api/
+│   │   ├── v1/
+│   │   │   ├── auth/
+│   │   │   │   ├── customer_routes.py
+│   │   │   │   ├── provider_routes.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── listings_routes.py
+│   │   │   ├── bookings_routes.py
+│   │   │   ├── payments_routes.py
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   │
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   ├── listing_service.py
+│   │   ├── booking_service.py
+│   │   └── __init__.py
+│   │
+│   ├── utils/
+│   │   ├── jwt_handler.py
+│   │   ├── supabase_client.py
+│   │   ├── hashing.py
+│   │   ├── constants.py
+│   │   └── __init__.py
+│   │
+│   ├── workers/
+│   │   ├── celery_app.py
+│   │   └── __init__.py
+│   │
+│   └── __init__.py
+│
+│
+├── frontend/                            # ⚛️ NEXT.JS FRONTEND (REACT + NODE)
+│   ├── package.json                     # Node dependencies
+│   ├── next.config.js                   # Next.js config file
+│   ├── tsconfig.json                    # TypeScript configuration
+│   ├── tailwind.config.js               # Tailwind setup (if using)
+│   ├── postcss.config.js
+│   │
+│   ├── public/                          # Static files (served as /)
+│   │   ├── favicon.ico
+│   │   ├── logo.png
+│   │   ├── hero.jpg
+│   │   ├── manifest.json
+│   │   └── icons/
+│   │
+│   ├── app/                             # Next.js App Router (SSR + routes)
+│   │   ├── layout.tsx                   # Root layout
+│   │   ├── page.tsx                     # Landing page
+│   │   │
+│   │   ├── about/page.tsx
+│   │   ├── treks/page.tsx
+│   │   ├── treks/[id]/page.tsx          # Dynamic trek details
+│   │   ├── bookings/page.tsx
+│   │   ├── profile/page.tsx
+│   │   ├── provider/page.tsx
+│   │   ├── login/page.tsx
+│   │   ├── register/page.tsx
+│   │   └── globals.css
+│   │
+│   ├── components/                      # Reusable UI components
+│   │   ├── Navbar.tsx
+│   │   ├── Footer.tsx
+│   │   ├── TrekCard.tsx
+│   │   ├── BookingCard.tsx
+│   │   ├── Loader.tsx
+│   │   └── ProtectedRoute.tsx
+│   │
+│   ├── context/                         # Global contexts
+│   │   ├── AuthContext.tsx
+│   │   ├── ThemeContext.tsx
+│   │   └── UIContext.tsx
+│   │
+│   ├── hooks/                           # Custom React hooks
+│   │   ├── useAuth.ts
+│   │   ├── useFetch.ts
+│   │   ├── useDebounce.ts
+│   │   └── useModal.ts
+│   │
+│   ├── services/                        # API service layer
+│   │   ├── apiClient.ts                 # Axios instance
+│   │   ├── authService.ts
+│   │   ├── listingService.ts
+│   │   ├── bookingService.ts
+│   │   └── reviewService.ts
+│   │
+│   ├── lib/                             # Configs, helpers, constants
+│   │   ├── constants.ts
+│   │   ├── helpers.ts
+│   │   └── auth.ts
+│   │
+│   ├── types/                           # TypeScript interfaces
+│   │   ├── trek.d.ts
+│   │   ├── user.d.ts
+│   │   ├── booking.d.ts
+│   │   └── review.d.ts
+│   │
+│   └── README.md
+│
+│
+├── scripts/                             # 🧩 Utility scripts
+│   ├── init_db.py
+│   ├── seed_data.py
+│   └── migrate.sh
+│
+├── tests/                               # ✅ Backend tests
+│   ├── test_auth.py
+│   ├── test_listings.py
+│   ├── test_booking.py
+│   ├── test_payments.py
+│   └── conftest.py
+│
+├── .env
+├── requirements.txt
+├── README.md
+├── Dockerfile
+├── docker-compose.yml
+└── .gitignore
+
+
+
+updated frontend:
+
+trek-marketplace/
+└── frontend/
+    ├── public/
+    │   ├── icons/
+    │   ├── images/
+    │   └── favicon.ico
+    │
+    ├── src/
+    │   ├── app/
+    │   │   ├── layout.tsx         # root layout wrapper
+    │   │   ├── page.tsx           # home page (index)
+    │   │   ├── treks/
+    │   │   │   └── TrekList.tsx
+    │   │   ├── login/
+    │   │   │   └── Login.tsx
+    │   │   └── ...
+    │   │
+    │   ├── components/
+    │   │   ├── Navbar.tsx
+    │   │   ├── Footer.tsx
+    │   │   └── ...
+    │   │
+    │   ├── context/
+    │   ├── hooks/
+    │   ├── services/
+    │   ├─ styles/
+        │   ├── globals.css               # Base variables, resets, fonts
+        │   ├── layout.css                # Layout & grid system
+        │   ├── navbar.css                # Navbar specific
+        │   ├── footer.css                # Footer specific
+        │   ├── hero.css                  # Hero section
+        │   ├── treks.css                 # Trek listing grid/cards
+        │   ├── booking.css               # Booking page styling
+        │   ├── login.css                 # Login / Register
+        │   ├── provider.css              # Provider dashboard styles
+        │   ├── about.css                 # About page
+        │   └── animations.css  
+    │   ├── main.tsx (or index.js)
+    │   └── App.tsx
+    │
+    └── package.json

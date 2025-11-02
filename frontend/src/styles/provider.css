@@ -1,0 +1,27 @@
+/* ================= PROVIDER DASHBOARD ================= */
+.provider-dashboard {
+    padding: 3rem 10%;
+  }
+  
+  .provider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .provider-list {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .provider-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  

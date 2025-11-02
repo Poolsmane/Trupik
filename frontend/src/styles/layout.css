@@ -1,0 +1,39 @@
+/* ===============================
+   BASE LAYOUT & TYPOGRAPHY
+=============================== */
+.container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+
+.content-block {
+  padding: 5rem 0;
+}
+
+.content-block.muted {
+  background-color: #f8f9fa;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+h3, h4 {
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+strong {
+  color: #111;
+}

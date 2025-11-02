@@ -1,0 +1,129 @@
+/* =================================
+   HISTORY & CULTURE SECTION
+================================= */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.history-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.history-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.history-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+/* =================================
+   BENEFITS SECTION
+================================= */
+.three-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.card img {
+  margin-bottom: 1rem;
+}
+
+/* =================================
+   TESTIMONIALS & SOCIAL PROOF
+================================= */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+blockquote {
+  background: #fff;
+  padding: 2rem;
+  border-left: 4px solid #00bfa6;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  font-style: italic;
+  color: #333;
+  line-height: 1.6;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* =================================
+   STATS SECTION
+================================= */
+.small-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.small-stats div {
+  text-align: center;
+}
+
+.small-stats strong {
+  display: block;
+  font-size: 1.8rem;
+  color: #00bfa6;
+}
+
+/* =================================
+   FAQ SECTION
+================================= */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.faq-grid div {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.faq-grid div:hover {
+  transform: translateY(-4px);
+}

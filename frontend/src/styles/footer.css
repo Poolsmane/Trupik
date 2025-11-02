@@ -1,0 +1,143 @@
+/* =========================
+   TRUPIK FOOTER STYLES
+========================= */
+
+.footer {
+    background: #0e0e0e;
+    color: #dcdcdc;
+    padding-top: 4rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .footer-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  /* ===== Brand Section ===== */
+  .footer-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footer-brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .footer-tagline {
+    margin-top: 0.75rem;
+    color: #aaa;
+    max-width: 300px;
+    font-size: 0.9rem;
+  }
+  
+  /* ===== Social Row ===== */
+  .social-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-icon img {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .social-icon:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  /* ===== Links ===== */
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.4rem;
+  }
+  
+  .footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent, #22c55e);
+  }
+  
+  /* ===== Contact ===== */
+  .footer-contact p {
+    color: #ccc;
+    margin-bottom: 0.6rem;
+  }
+  
+  .footer-contact a {
+    color: var(--accent, #22c55e);
+    text-decoration: none;
+  }
+  
+  .footer-contact a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ===== Bottom Bar ===== */
+  .footer-bottom {
+    background: #080808;
+    border-top: 1px solid #222;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .footer-bottom p {
+    color: #888;
+    font-size: 0.85rem;
+  }
+  
+  .footer-bottom a {
+    color: var(--accent, #22c55e);
+    text-decoration: none;
+  }
+  
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .footer {
+      padding-top: 2rem;
+    }
+  
+    .footer-inner {
+      gap: 2rem;
+      text-align: center;
+    }
+  
+    .social-row {
+      justify-content: center;
+    }
+  
+    .footer-logo-wrap {
+      justify-content: center;
+    }
+  }
+  

@@ -1,0 +1,131 @@
+Architecture (high level)
+
+Client (browser)
+→ CDN + Edge (caching, image optimization, edge functions)
+→ Next.js (Server Components for initial HTML; incremental static regeneration where possible)
+→ API Gateway / Reverse Proxy (optional)
+→ Python FastAPI services (REST/GraphQL) — business logic
+→ Datastore: Postgres (primary), Redis (cache/session), object storage S3
+→ Async jobs: Celery/RQ/Kubernetes Jobs (background notifications, ingestion, email)
+→ Search: Typesense/Meilisearch/Elasticsearch (for listings)
+Observability: Prometheus + Grafana, Sentry, ELK/managed logs
+
+Why Next.js (instead of Vite or CRA) for your product
+
+Built-in SSR/SSG/ISR — crucial for SEO (listings), first meaningful paint and fast TTFB.
+
+Edge & Serverless capabilities (Vercel/Cloudflare) — move response logic close to users.
+
+Image optimization, streaming, route-based code-splitting — speed wins.
+
+Smooth developer experience and easy integration with React Server Components.
+(Use Vite if you only want a fast SPA prototype — but for a marketplace/sharing-economy product, Next.js’ features matter.)
+
+Backend details (FastAPI best practices)
+
+Use FastAPI with Uvicorn + Gunicorn (or Hypercorn) for production or deploy via containers.
+
+Make endpoints async where I/O bound.
+
+Use Postgres + Prisma/SQLAlchemy + asyncpg/Tortoise ORM. Prefer Prisma if you want DX & type-safety (but it’s JS-first; SQLAlchemy/encode/databases is fine in Python).
+
+Use Redis for caching (hot data), rate-limiting, sessions, and pub/sub.
+
+Background jobs: Celery (Redis/RabbitMQ) or RQ or managed cloud tasks.
+
+Schema & contract: maintain OpenAPI docs. Consider exposing GraphQL (Ariadne, Strawberry) if clients need flexible queries.
+
+Use connection pooling (asyncpg pool) and DB pooler (pgbouncer) at scale.
+
+Add circuit-breaker patterns and retries with exponential backoff for external calls.
+
+API design: REST vs GraphQL
+
+REST (JSON): straightforward, cache-friendly, simpler to reason about. Good for most flows (listings, bookings).
+
+GraphQL: useful if frontend needs complex nested queries and to reduce round-trips. Adds complexity (caching, security).
+Recommendation: Start with well-designed REST (resource-based, versioned). If you hit many different client data needs, evaluate GraphQL later (or offer both).
+
+Performance & UX patterns (frontend + infra)
+
+Render at the edge: SSR or Edge Rendering for listing pages. Use ISR for pages that update infrequently.
+
+Cache aggressively: CDN for static assets, caching HTML where possible (stale-while-revalidate). Use fine-grained cache-control.
+
+Optimize images: serve next-gen formats, responsive sizes, use Next/Image or image CDN.
+
+Critical CSS & minimal JS for initial paint: server components & edge reduce client JS.
+
+Code-splitting & route-based lazy loading.
+
+Use HTTP/3 where possible, Brotli compression.
+
+Prefetch important routes (Next.js Link prefetch).
+
+Limit blocking third-party scripts — load deferred.
+
+Measure with Lighthouse, Web Vitals (CLS, LCP, FID/INP). Set targets (below).
+
+Performance targets to aim for:
+
+TTFB (after CDN): < 200 ms for main pages
+
+LCP: < 2.5 s
+
+CLS: < 0.1
+
+INP/FID: < 100 ms
+
+Scalability & Reliability
+
+Stateless web servers: state in DB/Redis/S3. Enables horizontal scaling.
+
+Autoscaling: containers or managed platforms (ECS/GKE/Fly.io) with CPU/memory-based scaling and replica autoscaling.
+
+Database scaling: read replicas, partitioning, connection pooling (pgbouncer), and vertical scaling as needed. Use managed DB for operations.
+
+Background workers: separate from web tier; horizontal scale.
+
+Message queue: RabbitMQ/Kafka for heavy event-driven workflows.
+
+Feature flags: launch features progressively.
+
+Blue/Green or Canary deployments for safe rollouts.
+
+Rate limiting & throttling, auth and request validation.
+
+Circuit-breakers and bulkheads to isolate failing components.
+
+Observability & Security
+
+Monitoring: Prometheus + Grafana or use Datadog. Track latency, error rates, DB connections, queue length.
+
+Error tracking: Sentry.
+
+Tracing: OpenTelemetry for distributed tracing.
+
+Security: strong auth (OAuth2, JWT with rotating refresh tokens), input validation, audit logs, WAF at edge, encryption at rest & TLS everywhere.
+
+Secrets management: Vault, AWS Secrets Manager, or Vercel/Render managed secrets.
+
+Concrete stack (opinionated) — 90% ready to start
+
+Frontend:
+
+Next.js (App Router, TypeScript), React Server Components, Next/Image, Tailwind CSS, React Query / SWR for client caching
+
+Backend:
+
+FastAPI (async), Uvicorn+Gunicorn, PostgreSQL (managed), Redis (managed), Celery (workers), S3 (object storage)
+
+Search & extras:
+
+Typesense or Meilisearch for fast listing search; Stripe for payments; Twilio for SMS
+
+Deployment & infra:
+
+Next.js → Vercel (edge + SSR)
+
+FastAPI → Fly.io / Render / AWS Fargate (containerized), DB: Neon/RDS, Redis: Upstash/Elasticache
+
+CI/CD: GitHub Actions (build & tests, deploy)
