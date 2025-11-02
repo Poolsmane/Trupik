@@ -1,11 +1,12 @@
 import "../styles/globals.css";
 import "../styles/navbar.css";
 import "../styles/footer.css";
+import "../styles/layout.css";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 import type { Metadata } from "next";
+import ScrollAnimationWrapper from "../components/ScrollAnimationWrapper"; // ✅ client component
 
 export const metadata: Metadata = {
   title: "Trupik | Explore Your Next Adventure",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Trupik",
     images: [
       {
-        url: "/images/hero.png", // ✅ Points to frontend/public/images/hero.png
+        url: "/images/hero.png",
         width: 1200,
         height: 630,
         alt: "Trupik Adventure Banner",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/icons/favicon.ico", // ✅ Points to frontend/public/icons/favicon.ico
+    icon: "/icons/favicon.ico",
     apple: "/icons/apple-touch-icon.png",
   },
 };
@@ -52,29 +53,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Optional global stylesheet for legacy support */}
-        <link rel="stylesheet" href="/static/css/style.css" />
-      </head>
-
       <body>
-        {/* ✅ Header & Navbar */}
-        <header>
+        <div className="app-wrapper">
           <Navbar />
-        </header>
-
-        {/* ✅ Main content (matches {% block content %}) */}
-        <main className="main-content" role="main">
-          {children}
-        </main>
-
-        {/* ✅ Footer */}
-        <footer>
+          <main className="main-content" role="main">
+            <ScrollAnimationWrapper>{children}</ScrollAnimationWrapper>
+          </main>
           <Footer />
-        </footer>
-
-        {/* ✅ Optional global JS (if you use main.js) */}
-        <script src="/static/js/main.js"></script>
+        </div>
       </body>
     </html>
   );

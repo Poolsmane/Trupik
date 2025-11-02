@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import "../styles/globals.css";
 import "../styles/hero.css";
 import "../styles/layout.css";
 import "../styles/treks.css";
